@@ -1,0 +1,29 @@
+@apiurl=http://localhost:3000
+@user_email=fulanodetal@mail.com
+@user_password=FulanoDeTal
+@user_name=Fulano de Tal
+@jwt_token={{loginRequest.response.body.access_token}}
+
+### /user
+POST {{apiurl}}/user
+Content-Type: application/json
+
+{
+  "name": "{{user_name}}",
+  "email": "{{user_email}}",
+  "password": "{{user_password}}"
+}
+
+### /login
+# @name loginRequest
+POST {{apiurl}}/login
+Content-Type: application/json
+
+{
+  "email": "{{user_email}}",
+  "password": "{{user_password}}"
+}
+
+### /
+GET {{apiurl}}
+Authorization: Bearer {{jwt_token}}
